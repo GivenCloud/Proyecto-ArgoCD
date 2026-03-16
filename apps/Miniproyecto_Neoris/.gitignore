@@ -1,0 +1,6 @@
+node_modules/
+.codemie
+k8s/base/postgres/postgres-secret.yaml
+terraform/.terraform/
+terraform/terraform.tfstate
+terraform/terraform.tfstate.backup

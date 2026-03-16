@@ -1,0 +1,10 @@
+node_modules/
+.git/
+k8s/
+helm/
+terraform/
+.github/
+CONTEXT.md
+CLAUDE.md
+README.md
+*.md

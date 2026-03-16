@@ -1,0 +1,6 @@
+apiVersion: v2
+name: miniproyecto
+description: API REST con Node.js y PostgreSQL desplegada en Minikube
+type: application
+version: 1.0.0
+appVersion: "1.0.0"
