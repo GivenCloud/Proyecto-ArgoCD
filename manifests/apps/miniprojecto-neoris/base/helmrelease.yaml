@@ -8,6 +8,7 @@ spec:
   sources:
     - repoURL: https://github.com/GivenCloud/Proyecto-ArgoCD.git
       path: charts/miniprojecto-neoris/helm/miniproyecto
+      targetRevision: main
       helm:
         valueFiles:
           - $values/resources/apps/miniprojecto-neoris/values.yaml

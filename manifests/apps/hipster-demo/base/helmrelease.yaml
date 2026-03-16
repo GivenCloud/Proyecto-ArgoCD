@@ -8,6 +8,7 @@ spec:
   sources:
     - repoURL: https://github.com/GivenCloud/Proyecto-ArgoCD.git
       path: charts/hipster-shop/hipstershop-demo/helm
+      targetRevision: main
       helm:
         valueFiles:
           - $values/resources/apps/hipstershop-demo/values.yaml
