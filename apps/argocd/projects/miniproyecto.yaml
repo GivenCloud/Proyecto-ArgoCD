@@ -10,7 +10,7 @@ spec:
   sourceRepos:
     - https://github.com/GivenCloud/Proyecto-ArgoCD.git
   destinations:
-    - namespace: miniproyecto-neoris
+    - namespace: miniproyectoneoris
       server: https://kubernetes.default.svc
   clusterResourceWhitelist:
     - group: ""
