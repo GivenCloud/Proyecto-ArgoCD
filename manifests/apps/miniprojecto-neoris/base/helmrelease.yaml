@@ -1,0 +1,27 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: miniprojecto-neoris
+  namespace: argocd
+spec:
+  project: default
+  sources:
+    - repoURL: https://github.com/GivenCloud/Proyecto-ArgoCD.git
+      path: charts/miniprojecto-neoris/helm/miniproyecto
+      helm:
+        valueFiles:
+          - $values/resources/apps/miniprojecto-neoris/values.yaml
+    - repoURL: https://github.com/GivenCloud/Proyecto-ArgoCD.git
+      targetRevision: main
+      ref: values
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: miniprojecto-neoris
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+      - ServerSideApply=true
+      - ApplyOutOfSyncOnly=true
+      - RespectIgnoreDifferences=true
+      - Replace=false
+  revisionHistoryLimit: 3

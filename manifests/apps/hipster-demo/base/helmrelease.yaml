@@ -1,0 +1,27 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: hipster-demo
+  namespace: argocd
+spec:
+  project: default
+  sources:
+    - repoURL: https://github.com/GivenCloud/Proyecto-ArgoCD.git
+      path: charts/hipster-shop/hipstershop-demo/helm
+      helm:
+        valueFiles:
+          - $values/resources/apps/hipstershop-demo/values.yaml
+    - repoURL: https://github.com/GivenCloud/Proyecto-ArgoCD.git
+      targetRevision: main
+      ref: values
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: hipstershop
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+      - ServerSideApply=true
+      - ApplyOutOfSyncOnly=true
+      - RespectIgnoreDifferences=true
+      - Replace=false
+  revisionHistoryLimit: 3

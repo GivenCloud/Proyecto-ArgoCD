@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: apps-manifests
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: 'https://github.com/GivenCloud/Proyecto-ArgoCD.git'
+    path: manifests/apps/__overlays
+    targetRevision: main
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: argocd
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
