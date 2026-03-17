@@ -1,16 +1,16 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "fake-api.fullname" . }}
+  name: fake-api-deployment
 spec:
   replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
-      app: {{ include "fake-api.name" . }}
+      app: fake-api
   template:
     metadata:
       labels:
-        app: {{ include "fake-api.name" . }}
+        app: fake-api
     spec:
       containers:
         - name: fake-api
