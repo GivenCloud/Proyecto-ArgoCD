@@ -1,5 +1,5 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
-- ../hipster-demo/lab
+# - ../hipster-demo/lab
 - ../miniprojecto-neoris/lab
