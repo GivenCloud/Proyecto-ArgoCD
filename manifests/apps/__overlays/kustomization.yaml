@@ -3,4 +3,4 @@ kind: Kustomization
 resources:
 - ../hipster-demo/lab
 - ../miniprojecto-neoris/lab
-- ../fake-api/lab
+# - ../fake-api/lab
