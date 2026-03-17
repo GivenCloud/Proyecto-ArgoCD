@@ -1,0 +1,33 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: fake-api
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: default
+  sources:
+    - repoURL: https://github.com/GivenCloud/Proyecto-ArgoCD.git
+      path: charts/fake-api
+      targetRevision: main
+      helm:
+        valueFiles:
+          - $values/resources/apps/fake-api/values.yaml
+    - repoURL: https://github.com/GivenCloud/Proyecto-ArgoCD.git
+      targetRevision: main
+      ref: values
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: fakeapi
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+      - ServerSideApply=true
+      - ApplyOutOfSyncOnly=true
+      - RespectIgnoreDifferences=true
+      - Replace=false
+  revisionHistoryLimit: 3
